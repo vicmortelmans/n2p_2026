@@ -1,9 +1,4 @@
 
-# Table of Contents
-
-
-
-In this notes you'll read my personal quest for finding an automated process for digitizing and processing color negatives. I think I now have reached a workflow that I can perfectly live with for the rest of my live—or how many times did I say the before…?
 
 I have been trying all available tools, my notes mention FilmLab, RawTherapee, Darktable, XnView, digikam, Negatron.io, Color.io, Film Q,… and no, not Negative Lab Pro, because for the 15 color films that I shoot on average per year (aside to some black and white), the price is just too high. Processing scans in these tools is a hit-and-miss and most often requires much manual adjustments, if a decent result can be reached at all.
 
@@ -19,7 +14,7 @@ I went through a stage when I was trying to understand the relation between pixe
 
 At some point, I was implementing this whold cascade of gammas, logarithms, densities in my postprocessing from linear raw negative digitized pixels to a visible picture, only to find out that the curves that these formulas actually produce are basically very close to the un-scientific layer-by-layer auto-leveling that I was so desperately trying to improve.
 
-![img](home.org.img/Install_FilmLab_[9/10]/2025-05-23_19-31-05_screenshot.png)
+![img](README.images/2025-05-23_19-31-05_screenshot.png)
 
 I started to realize that whatever postprocessing method I would devise, it will always fail on some pictures that have deviating colors in the scene. Because I typically postprocess a complete roll of negatives, most of which are shot with similar lighting conditions, my next plan was to use a common processing for all pictures.
 
@@ -31,7 +26,7 @@ In the meanwhile, I embraced the power of AI and ditched the scripting and tweak
 
 My first implementation was collecting the brightest and lowest pixels for all images and calculating a regression line to estimate the neutral color. This was not bad, but the main problem is that these black and white pixels lie in the zone where the behaviour of film is typically *not* obeying the mathematical linearity.
 
-![img](home.org.img/Install_FilmLab_[11/19]/2026-01-27_22-55-52_screenshot.png)
+![img](README.images/2026-01-27_22-55-52_screenshot.png)
 
 I came across a new intuition. Increasing a pixel in brightness in linear space (multiplication of all channels by the same constant), is adding constant $(k,k,k)$ in log-density space, or a translation in the direction of the unity vector $(1,1,1)$. To eliminate the brightness dimension from an image, all pixels can be projected along the unity vector on a plane through the origin that is perpendicular to the unity vector. This way you create a kind of *heat map* representing the chromatic data in the image. Assuming that an images, and for sure a set of images, contain all colors, although not in the same amounts, some clever processing can be found to estimate the neutral color based on this chromatic heat map. The sweet spot lies somewhere between finding the geographic middle and the gravity center of the heat map.
 
@@ -39,7 +34,7 @@ In practice, I'm dividing the chromatic plane using a grid, counting for each ce
 
 A roll often contains images shot at different occasions, in different lighting conditions, each requiring their own correction factors. I could solve this by organizing my raw images in different directories, grouped by lighting conditions, and run the postprocessing on each directory separately. But when you look at the graph that represents the chromaticity plane, you can clearly see how the pictures with similar lighting conditions are forming clusters. There are specialized libraries that can identify these clusters and allow me to fully automatically group the pictures in my roll by similar lighting conditions and calculate a proper color correction for each cluster, still taking advantage of having multiple images as input for the color correction, so it is not fooled by images with atypical colors in the scene and making the colors of the output images consistent.
 
-![img](home.org.img/Install_FilmLab_[18/20]/2026-02-02_23-53-29_screenshot.png)
+![img](README.images/2026-02-02_23-53-29_screenshot.png)
 
 Gemini also helped me to implement multiprocessing, so this job is now using all cores of my CPU. And just for the record, my postprocessing also involves a vignetting correction, because my Pentax M42 50mm macro lens at $f/8$ is probably not the best in class. And the application supports half-frame cameras, for which each image is split in half before processing. That option is the only step that is not fully automatic, it is triggered by a command line flag `-h`.
 
