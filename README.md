@@ -1,18 +1,18 @@
-Usage:
-  python3 n2p_2026.py
+# Usage
+`python3 n2p_2026.py`
 
-Installation:
-- make sure the proper python modules are installed; sorry, you're on your own here…
+# Installation
+Make sure the proper python modules are installed; sorry, you're on your own here…
 
-Input data: 
-- you are in a directory containing a series of RAW files (the script is currently only looking for `*.ARW` files, but that's easily changed). For each image on your roll, you take a scan with red backlight, a scan with green backlight and a scan with green backlight.
+# Input data
+You are in a directory containing a series of RAW files (the script is currently only looking for `*.ARW` files, but that's easily changed). For each image on your roll, you take a scan with red backlight, a scan with green backlight and a scan with green backlight.
 
-Output data:
-- you'll find out ;)
+# Output data
+You'll find out ;)
 
---
+---
 
-In this notes you'll read my personal quest for finding an automated process for digitizing and processing color negatives. I think I now have reached a workflow that I can perfectly live with for the rest of my life—or how many times did I say the before…?
+In these notes you'll read my personal quest for finding an automated process for digitizing and processing color negatives. I think I now have reached a workflow that I can perfectly live with for the rest of my life—or how many times did I say the before…?
 
 I have been trying all available tools, my notes mention FilmLab, RawTherapee, Darktable, XnView, digikam, Negatron.io, Color.io, Film Q,… and no, not Negative Lab Pro, because for the 15 color films that I shoot on average per year (aside to some black and white), the price is just too high. Processing scans in these tools is a hit-and-miss and most often requires much manual adjustments, if a decent result can be reached at all.
 
