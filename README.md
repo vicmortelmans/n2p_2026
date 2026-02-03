@@ -10,7 +10,7 @@ You are in a directory containing a series of RAW files (the script is currently
 # Output data
 You'll find out ;)
 
----
+# Notes
 
 In these notes you'll read my personal quest for finding an automated process for digitizing and processing color negatives. I think I now have reached a workflow that I can perfectly live with for the rest of my life—or how many times did I say the before…?
 
