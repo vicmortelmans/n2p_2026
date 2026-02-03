@@ -1,4 +1,4 @@
-
+In this notes you'll read my personal quest for finding an automated process for digitizing and processing color negatives. I think I now have reached a workflow that I can perfectly live with for the rest of my live—or how many times did I say the before…?
 
 I have been trying all available tools, my notes mention FilmLab, RawTherapee, Darktable, XnView, digikam, Negatron.io, Color.io, Film Q,… and no, not Negative Lab Pro, because for the 15 color films that I shoot on average per year (aside to some black and white), the price is just too high. Processing scans in these tools is a hit-and-miss and most often requires much manual adjustments, if a decent result can be reached at all.
 
